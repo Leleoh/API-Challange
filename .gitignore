@@ -1,0 +1,45 @@
+# === Build artifacts ===
+build/
+DerivedData/
+
+# === Xcode project user data ===
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xcuserdatad
+
+# === Swift Package Manager ===
+.swiftpm/
+Packages/
+Package.pins
+Package.resolved
+
+# === CocoaPods ===
+Pods/
+Podfile.lock
+
+# === Carthage ===
+Carthage/Build/
+
+# === Fastlane ===
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# === Archives and symbols ===
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# === Swift Playgrounds ===
+timeline.xctimeline
+playground.xcworkspace
+
+# === macOS system files ===
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# === Environment / local config ===
+*.env
