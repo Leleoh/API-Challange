@@ -33,7 +33,7 @@ struct PillStepper: View {
             // Valor
             Text("\(value)")
                 .font(.system(size: 17, weight: .regular))
-//                .frame(minWidth: 40)
+                .frame(width: 20)
 
             // Botão +
             Button {
