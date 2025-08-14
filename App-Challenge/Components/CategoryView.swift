@@ -18,8 +18,7 @@ struct CategoryView: View {
                 
                 Button{
                     
-                    
-                    
+
                     
                 }label: {
                     Text(categories)
