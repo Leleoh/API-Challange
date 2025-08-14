@@ -1,0 +1,79 @@
+//
+//  ProductCardMedium.swift
+//  App-Challenge
+//
+//  Created by Leonel Ferraz Hernandez on 13/08/25.
+//
+
+import SwiftUI
+
+struct ProductCardMedium: View {
+    
+//    let imageName: String
+//    let productName: String
+//    let price: String
+    
+    @State private var showDetailsModal: Bool = false
+    
+    let heart = FavoriteIcon()
+    
+    var body: some View {
+        
+        
+        
+        ZStack {
+               RoundedRectangle(cornerRadius: 16)
+                   .foregroundStyle(.background.secondary)
+                   .frame(width: 177, height: 250)
+               
+               VStack{
+                   ZStack(alignment: .topTrailing){
+                       Image("PlaceholderMediumCard")
+                           .resizable()
+                           .frame(width: 160, height: 160)
+                           .cornerRadius(8)
+                           .padding(.top, 8)
+                       
+                       // coração independente
+                       heart
+                           .padding(.top, 8)
+                           .onTapGesture {
+                               print("Favorito clicado")
+                           }
+                   }
+                   Spacer()
+                   
+                   VStack(spacing: 8){
+                       Text("Product name with two or more lines goes here")
+                           .font(.subheadline)
+                           .padding(.horizontal, 8)
+                       
+                       Text("US$ 00,00")
+                           .fontWeight(.bold)
+                           .font(.subheadline)
+                           .frame(maxWidth: .infinity, alignment: .leading)
+                           .padding(.leading, 8)
+                   }
+                   
+                   Spacer()
+               }
+               .frame(width: 177, height: 250)
+               .contentShape(Rectangle())
+               .onTapGesture {
+                   showDetailsModal = true
+               }
+           }
+           .sheet(isPresented: $showDetailsModal) {
+               Detail()
+           }//Fim ZStack
+    }
+}
+
+#Preview {
+//    ProductCardMedium(
+//            imageName: "PlaceholderMediumCard",
+//            productName: "Product name with two or more lines goes here",
+//            price: "US$ 00,00"
+//        )
+    ProductCardMedium()
+}
