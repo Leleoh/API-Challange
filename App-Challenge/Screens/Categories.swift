@@ -33,14 +33,21 @@ struct Categories: View {
                     
                        VStack ( spacing: 12) {
                         ForEach(items, id: \.self) { _ in
-                            CategoryView()
-                        }
-                    }
+                            NavigationLink {
+                                  Category()
+                              } label: {
+                                  CategoryView()
+                              }
+                              
+                          }
+                      }
+                    
                               .padding(.horizontal, 16)
                               .padding(.bottom, 24)
                 }
             }
             .navigationTitle("Categories")
+                    
         }
         .searchable(text: $searchText, prompt: "Search")
         .background(Color.white)

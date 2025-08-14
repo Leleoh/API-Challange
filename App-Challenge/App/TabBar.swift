@@ -12,31 +12,31 @@ struct TabBar: View {
       
         TabView{
             
-            Tab("Tasks", systemImage: "house") {
+            Tab("Home", systemImage: "house") {
                 NavigationStack {
                     Home()
                 }
             }
             
-            Tab("Tasks", systemImage: "square.grid.2x2.fill") {
+            Tab("Categories", systemImage: "square.grid.2x2.fill") {
                 NavigationStack {
                     Categories()
                 }
             }
             
-            Tab("Tasks", systemImage: "cart.fill") {
+            Tab("Cart", systemImage: "cart.fill") {
                 NavigationStack {
                     Cart()
                 }
             }
             
-            Tab("Tasks", systemImage: "heart.fill") {
+            Tab("Favorites", systemImage: "heart.fill") {
                 NavigationStack {
                    Favorites()
                 }
             }
             
-            Tab("Tasks", systemImage: "bag.fill") {
+            Tab("Orders", systemImage: "bag.fill") {
                 NavigationStack {
                     Orders()
                 }
