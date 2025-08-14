@@ -8,8 +8,43 @@
 import SwiftUI
 
 struct Home: View {
+    
+    let LargeCard = ProductCardLarge()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        
+        ScrollView {
+                    VStack(alignment: .leading, spacing: 16) {
+                        
+                        Text("Deals of the day")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 16)
+                        
+                        LargeCard
+                            .padding(.horizontal, 16)
+                        
+                        Text("Top picks")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .padding(.horizontal, 16)
+                        
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                            ForEach(0..<20) { index in
+                                ProductCardMedium()
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                        
+                    }
+                }
+        .navigationTitle("Home")
+        .toolbarBackground(Color(UIColor.tertiarySystemBackground), for: .navigationBar)
+        .toolbarVisibility(.visible, for: .navigationBar)
+        
+        
+        
     }
 }
 
