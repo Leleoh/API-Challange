@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryButtonView: View {
-     var category: String = "Category"
+//     var category: String = "Category"
     
     var body: some View {
       
@@ -23,18 +23,18 @@ struct CategoryButtonView: View {
                     
                 } label : {
                     Image(systemName: "sparkles")
-                        .foregroundStyle(.fill.quaternary)
+                        .foregroundStyle(.fillsQuaternary)
                         .font(.system(size: 40))
                         .frame(width: 84, height: 84)
                         .background(
                             RoundedRectangle(cornerRadius:16)
 
-                                .foregroundStyle(.background.secondary)
+                                .foregroundStyle(.backgroundsSecondary)
                         )
                     
                     
                 }
-                Text(category)
+                Text("Category")
                 
                 
             }
