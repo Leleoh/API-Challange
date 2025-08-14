@@ -15,6 +15,8 @@ struct Detail: View {
     var text2 = "R$ 00,00"
     var text3 = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis nec mauris ac placerat. Cras pulvinar dolor at orci semper hendrerit. Nam elementum leo vitae quam commodo, blandit ultricies diam malesuada. Suspendisse lacinia euismod quam interdum mollis. Pellentesque a eleifend ante. Aliquam tempus ultricies velit, eget consequat m"
     
+    let productImage = ProductPhotoLarge()
+    
     var body: some View {
         
         NavigationStack{
@@ -23,7 +25,8 @@ struct Detail: View {
                 
                 VStack(spacing : 16){
                     
-                    Image("Detailimage")
+                    //Chama o componente
+                    productImage
                     
                     VStack(alignment: .leading , spacing: 16){
                         

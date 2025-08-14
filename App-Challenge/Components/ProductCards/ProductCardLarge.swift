@@ -13,6 +13,8 @@ struct ProductCardLarge: View {
     //    let price: String
     let heart = FavoriteIcon()
     
+    @State private var showDetailsModal: Bool = false
+    
     var body: some View {
         
        
@@ -61,7 +63,13 @@ struct ProductCardLarge: View {
                 
             }
             .frame(width: 361, height: 176)
-            
+            .contentShape(Rectangle())
+            .onTapGesture {
+                showDetailsModal = true
+            }
+            .sheet(isPresented: $showDetailsModal) {
+                Detail()
+            }
             
         }//Fim zstack
         
