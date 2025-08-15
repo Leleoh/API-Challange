@@ -9,7 +9,14 @@ import SwiftUI
 
 struct Home: View {
     
+    
+    
+    let viewModel = ProductViewModel(service: ProductService())
+    
+
+    
     let LargeCard = ProductCardLarge()
+    
     var body: some View {
         
         
@@ -31,17 +38,23 @@ struct Home: View {
                             .padding(.horizontal, 16)
                         
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                            ForEach(0..<20) { index in
-                                ProductCardMedium()
+                            ForEach(viewModel.products) { product in
+                                ProductCardMedium(product: product)
                             }
                         }
                         .padding(.horizontal, 16)
                         
                     }
+                    .task {
+                        await viewModel.loadProducts()
+                    }
                 }
         .navigationTitle("Home")
         .toolbarBackground(Color(UIColor.tertiarySystemBackground), for: .navigationBar)
         .toolbarVisibility(.visible, for: .navigationBar)
+        .refreshable {
+            await viewModel.loadProducts()
+        }
         
         
         
@@ -49,5 +62,6 @@ struct Home: View {
 }
 
 #Preview {
+//    Home(viewModel: ProductViewModel(service: ProductService()))
     Home()
 }
