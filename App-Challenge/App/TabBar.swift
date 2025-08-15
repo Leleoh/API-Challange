@@ -14,6 +14,7 @@ struct TabBar: View {
             
             Tab("Home", systemImage: "house") {
                 NavigationStack {
+//                    Home(viewModel: ProductViewModel(service: ProductService()))
                     Home()
                 }
             }

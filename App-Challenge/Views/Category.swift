@@ -11,6 +11,8 @@ struct Category: View {
     @State private var searchText = ""
     let items = Array(0..<20)
 
+    let viewModel: ProductViewModel
+    
     var body: some View {
         NavigationStack {
             List {
@@ -21,8 +23,8 @@ struct Category: View {
                     LazyVGrid(columns: [GridItem(.flexible()),
                                         GridItem(.flexible())],
                               spacing: 12) {
-                        ForEach(items, id: \.self) { _ in
-                            ProductCardMedium()
+                        ForEach(viewModel.products) { product in
+                            ProductCardMedium(product: product)
                         }
                     }
                     .padding(.vertical, 8)
@@ -36,5 +38,5 @@ struct Category: View {
     }
 }
 #Preview {
-    Category()
+    Category(viewModel: ProductViewModel(service: ProductService()))
 }

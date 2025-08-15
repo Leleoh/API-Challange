@@ -17,6 +17,8 @@ struct ProductCardMedium: View {
     
     let heart = FavoriteIcon()
     
+    var product: Product
+    
     var body: some View {
         
         
@@ -28,13 +30,18 @@ struct ProductCardMedium: View {
                
                VStack{
                    ZStack(alignment: .topTrailing){
-                       Image("PlaceholderMediumCard")
-                           .resizable()
-                           .frame(width: 160, height: 160)
-                           .cornerRadius(8)
-                           .padding(.top, 8)
-                       
-                       // coração independente
+//                       Image("PlaceholderMediumCard")
+                       AsyncImage(url: URL(string: product.thumbnail)) { image in
+                           image.resizable()
+                       } placeholder: {
+                           Image(systemName: "photo")
+                           
+                               .resizable()
+                               .frame(width: 160, height: 160)
+                               .cornerRadius(8)
+                               .padding(.top, 8)
+                       }
+//                        coração independente
                        heart
                            .padding(.top, 8)
                            .onTapGesture {
@@ -43,12 +50,12 @@ struct ProductCardMedium: View {
                    }
                    Spacer()
                    
-                   VStack(spacing: 8){
-                       Text("Product name with two or more lines goes here")
+                   VStack( alignment: .leading, spacing: 8,){
+                       Text(product.title)
                            .font(.subheadline)
-                           .padding(.horizontal, 8)
+                           .padding(.leading, 8)
                        
-                       Text("US$ 00,00")
+                       Text(String(format: "US$ %.2f", product.price))
                            .fontWeight(.bold)
                            .font(.subheadline)
                            .frame(maxWidth: .infinity, alignment: .leading)
@@ -75,5 +82,5 @@ struct ProductCardMedium: View {
 //            productName: "Product name with two or more lines goes here",
 //            price: "US$ 00,00"
 //        )
-    ProductCardMedium()
+//    ProductCardMedium(product: )
 }
