@@ -11,11 +11,7 @@ struct Home: View {
     
     
     
-    let viewModel = ProductViewModel(service: ProductService())
-    
-
-    
-    let LargeCard = ProductCardLarge()
+    let viewModel : ProductViewModel
     
     var body: some View {
         
@@ -29,9 +25,12 @@ struct Home: View {
                             .padding(.horizontal, 16)
                             .padding(.top, 16)
                         
-                        LargeCard
-                            .padding(.horizontal, 16)
                         
+                        if let product = viewModel.product {
+                            ProductCardLarge(product: product, viewModel: viewModel)
+                                .padding(.horizontal, 16)
+                        }
+
                         Text("Top picks")
                             .font(.title2)
                             .fontWeight(.bold)
@@ -61,7 +60,7 @@ struct Home: View {
     }
 }
 
-#Preview {
-//    Home(viewModel: ProductViewModel(service: ProductService()))
-    Home()
-}
+//#Preview {
+////    Home(viewModel: ProductViewModel(service: ProductService()))
+//    Home()
+//}

@@ -14,14 +14,14 @@ struct TabBar: View {
             
             Tab("Home", systemImage: "house") {
                 NavigationStack {
-//                    Home(viewModel: ProductViewModel(service: ProductService()))
-                    Home()
+                    Home(viewModel: ProductViewModel(service: ProductService()))
                 }
             }
             
             Tab("Categories", systemImage: "square.grid.2x2.fill") {
                 NavigationStack {
                     Categories()
+                   
                 }
             }
             

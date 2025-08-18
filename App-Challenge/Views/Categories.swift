@@ -81,7 +81,7 @@ struct Categories: View {
     private var carouselSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(0..<10, id: \.self) { _ in
+                ForEach(0..<4, id: \.self) { _ in
                     CategoryButtonView()
                 }
             }
