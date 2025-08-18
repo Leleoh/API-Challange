@@ -34,6 +34,9 @@ struct Category: View {
             .listStyle(.plain)
             .navigationTitle("Categories")
         }
+        .task {
+            await viewModel.loadProducts()
+        }
         .searchable(text: $searchText, prompt: "Search")
     }
 }

@@ -34,7 +34,7 @@ struct ProductCardMedium: View {
                        AsyncImage(url: URL(string: product.thumbnail)) { image in
                            image.resizable()
                        } placeholder: {
-                           Image(systemName: "photo")
+                           Image( "ImageProduct")
                            
                                .resizable()
                                .frame(width: 160, height: 160)
@@ -71,7 +71,10 @@ struct ProductCardMedium: View {
                }
            }
            .sheet(isPresented: $showDetailsModal) {
-               Detail()
+               NavigationStack {
+                   Detail(product: product)
+               }
+                
            }//Fim ZStack
     }
 }
