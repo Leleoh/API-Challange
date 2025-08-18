@@ -1,10 +1,10 @@
+////
+////  ProductCardLarge.swift
+////  App-Challenge
+////
+////  Created by Leonel Ferraz Hernandez on 14/08/25.
+////
 //
-//  ProductCardLarge.swift
-//  App-Challenge
-//
-//  Created by Leonel Ferraz Hernandez on 14/08/25.
-//
-
 import SwiftUI
 
 struct ProductCardLarge: View {
@@ -13,7 +13,11 @@ struct ProductCardLarge: View {
     //    let price: String
     let heart = FavoriteIcon()
     
+    var product: Product
+    
     @State private var showDetailsModal: Bool = false
+    
+    let viewModel : ProductViewModel
     
     var body: some View {
         
@@ -28,15 +32,20 @@ struct ProductCardLarge: View {
                 .frame(width: 361, height: 176)
             
             HStack(){
-                Image("PlaceholderMediumCard")
-                    .resizable()
-                    .frame(width: 160, height: 160)
-                    .cornerRadius(8)
-                    .padding(.leading, 8)
+//                Image("PlaceholderMediumCard")
+                AsyncImage(url: URL(string: product.thumbnail)) { image in
+                    image.resizable()
+                } placeholder: {
+                    Image( "ImageProduct")
+                        .resizable()
+                        .frame(width: 160, height: 160)
+                        .cornerRadius(8)
+                        .padding(.leading, 8)
+                }
                 
                 VStack{
                     HStack(alignment: .center){
-                        Text("CATEGORY")
+                        Text(product.category)
                             .font(.footnote)
                             .foregroundStyle(.labelsSecondary)
                         
@@ -47,10 +56,10 @@ struct ProductCardLarge: View {
                     
                     Spacer()
                     
-                    Text("Product name with two or more lines goes here")
+                    Text(product.title)
                         .font(.subheadline)
                     
-                    Text("US$ 00,00")
+                    Text(String(format: "US$ %.2f", product.price))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 2)
@@ -67,9 +76,20 @@ struct ProductCardLarge: View {
             .onTapGesture {
                 showDetailsModal = true
             }
+           
+            
             .sheet(isPresented: $showDetailsModal) {
-                Detail()
+            NavigationStack{
+                    Detail(product: product) // <- passa o product aqui
+                    
+                }
+                
             }
+//            .navigationTitle("Details")// título centralizado
+//            .navigationBarTitleDisplayMode(.inline)
+//                Detail(product : product)
+                
+            
             
         }//Fim zstack
         
@@ -78,11 +98,14 @@ struct ProductCardLarge: View {
     }
 }
 
-#Preview {
-    //    ProductCardLarge(
-    //            imageName: "PlaceholderMediumCard",
-    //            productName: "Product name with two or more lines goes here",
-    //            price: "US$ 00,00"
-    //        )
-    ProductCardLarge()
-}
+////#Preview {
+////    //    ProductCardLarge(
+////    //            imageName: "PlaceholderMediumCard",
+////    //            productName: "Product name with two or more lines goes here",
+////    //            price: "US$ 00,00"
+////    //        )
+////    ProductCardLarge()
+////}
+
+
+
