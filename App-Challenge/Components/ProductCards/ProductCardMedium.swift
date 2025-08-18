@@ -71,7 +71,9 @@ struct ProductCardMedium: View {
                }
            }
            .sheet(isPresented: $showDetailsModal) {
-               Detail(product: product)
+               NavigationStack {
+                   Detail(product: product)
+               }
                 
            }//Fim ZStack
     }

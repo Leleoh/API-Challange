@@ -85,8 +85,8 @@ struct ProductCardLarge: View {
                 }
                 
             }
-            .navigationTitle("Details")// título centralizado
-            .navigationBarTitleDisplayMode(.inline)
+//            .navigationTitle("Details")// título centralizado
+//            .navigationBarTitleDisplayMode(.inline)
 //                Detail(product : product)
                 
             

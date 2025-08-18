@@ -70,6 +70,10 @@ struct Detail: View {
                 
             }
         }
+        .navigationTitle("Details")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(Color.white, for: .navigationBar)
        
         
         
