@@ -29,7 +29,7 @@ struct Home: View {
                             .padding(.horizontal, 16)
                             .padding(.top, 16)
                         
-                        LargeCard
+                        ProductCardLarge()
                             .padding(.horizontal, 16)
                         
                         Text("Top picks")
