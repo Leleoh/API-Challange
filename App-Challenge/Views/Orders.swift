@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct Orders: View {
+    @State private var searchText = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       
+        VStack{
+            
+            OrdersEmptyState()
+        }
+        
+        .searchable(text: $searchText, prompt: "Search")
+        
+        
     }
 }
 

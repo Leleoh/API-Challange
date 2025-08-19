@@ -75,7 +75,7 @@ struct Categories: View {
             .navigationTitle("Categories")
         }
         .searchable(text: $searchText, prompt: "Search")
-        .background(Color.white)
+//        .background(Color.white)
     }
     
     private var carouselSection: some View {

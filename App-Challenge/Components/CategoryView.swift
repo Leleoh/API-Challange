@@ -61,16 +61,16 @@ struct CategoryView: View {
         
         HStack {
             Text(categories)
-                .foregroundStyle(.black)
+                .foregroundStyle(.labelsPrimary)
             Spacer()
             Image(systemName: "chevron.right")
-                .foregroundStyle(.black)
+                .foregroundStyle(.labelsPrimary)
         }
         .padding(16)
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(.white))
+                .fill(Color(.backgroundsPrimary))
         )
         .contentShape(RoundedRectangle(cornerRadius: 16))
     }
