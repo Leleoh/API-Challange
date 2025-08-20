@@ -35,7 +35,6 @@ struct Product: Identifiable, Decodable{
     }
 }
 
-
 @Model
 class SavedProductRef {
     @Attribute(.unique) var productId: Int
