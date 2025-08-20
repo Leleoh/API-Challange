@@ -8,38 +8,54 @@
 import SwiftUI
 
 struct Category: View {
+    
+//    let category: ProductCategory //Categoria selecionada
     @State private var searchText = ""
-    let items = Array(0..<20)
+   
+    let title: String
+    let products: [Product]
+    
+//    let viewModel : ProductViewModel
+    
+    
+    
+    
+//    let items = Array(0..<200)
 
-    let viewModel: ProductViewModel
+    var filteredProducts: [Product] {
+        if searchText.isEmpty {
+            return products
+        } else {
+            return products.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
     
     var body: some View {
         NavigationStack {
-            List {
-                    
-
-                // Seção 2: grid/lista de categorias
-                Section {
-                    LazyVGrid(columns: [GridItem(.flexible()),
-                                        GridItem(.flexible())],
-                              spacing: 12) {
-                        ForEach(viewModel.products) { product in
-                            ProductCardMedium(product: product)
-                        }
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())],
+                          spacing: 12) {
+                    ForEach(filteredProducts) { product in
+                        ProductCardMedium(product: product)
                     }
-                    .padding(.vertical, 8)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
                 }
-            }
-            .listStyle(.plain)
-            .navigationTitle("Categories")
-        }
-        .task {
-            await viewModel.loadProducts()
-        }
-        .searchable(text: $searchText, prompt: "Search")
+                .padding(16)
+            }//Fim ScrollView
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
+
+            
+        }//Fim navigation Stack
+        .navigationTitle("Category")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
-#Preview {
-    Category(viewModel: ProductViewModel(service: ProductService()))
-}
+
+
+
+
+//#Preview {
+//    
+//    let listaprodutos: [Product] = []
+//    
+//    let mock = Category(title: "Apple", products: listaprodutos, viewModel: viewModel)
+//}
