@@ -5,52 +5,33 @@
 //  Created by Gustavo Melleu on 13/08/25.
 //
 
+// CategoryButtonView.swift
+
 import SwiftUI
 
 struct CategoryButtonView: View {
-//     var category: String = "Category"
+    let categoryName: String
+    let systemImageName: String
     
     var body: some View {
-      
-      
-        NavigationStack{
-            
-            VStack{
-                
-                Button{
-                    
-                    
-                    
-                } label : {
-                    Image(systemName: "sparkles")
-                        .foregroundStyle(.fillsQuaternary)
-                        .font(.system(size: 40))
-                        .frame(width: 84, height: 84)
-                        .background(
-                            RoundedRectangle(cornerRadius:16)
-
-                                .foregroundStyle(.backgroundsSecondary)
-                        )
-                    
-                    
-                }
-                Text("Category")
-                
-                
+        VStack {
+            NavigationLink(destination: Text("\(categoryName) Category")) {
+                Image(systemName: systemImageName)
+                    .foregroundStyle(.fillsQuaternary)
+                    .font(.system(size: 40))
+                    .frame(width: 84, height: 84)
+                    .background(
+                        RoundedRectangle(cornerRadius:16)
+                            .foregroundStyle(.backgroundsSecondary)
+                    )
             }
-                   
-            
-            
-            
+            Text(categoryName)
+                .font(.footnote)
+                .multilineTextAlignment(.center)
         }
-        
-        
-        
-        
     }
- 
 }
 
 #Preview {
-    CategoryButtonView()
+    CategoryButtonView(categoryName: "Beauty", systemImageName: "sparkles")
 }

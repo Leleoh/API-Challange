@@ -47,6 +47,7 @@ struct ProductCardLarge: View {
                     HStack(alignment: .center){
                         Text(product.category)
                             .font(.footnote)
+                            .textCase(.uppercase)
                             .foregroundStyle(.labelsSecondary)
                         
                         Spacer()
@@ -58,6 +59,8 @@ struct ProductCardLarge: View {
                     
                     Text(product.title)
                         .font(.subheadline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     
                     Text(String(format: "US$ %.2f", product.price))
                         .fontWeight(.bold)

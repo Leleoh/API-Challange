@@ -55,13 +55,16 @@
 import SwiftUI
 
 struct CategoryView: View {
-    var categories = "Category"
+    let title: String
+    let imageName: String
 
     var body: some View {
         
         HStack {
-            Text(categories)
+            Text(title)
+//                .font(.caption)
                 .foregroundStyle(.black)
+                .multilineTextAlignment(.center)
             Spacer()
             Image(systemName: "chevron.right")
                 .foregroundStyle(.black)
@@ -77,6 +80,6 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView()
+    CategoryView(title: "Beauty", imageName: "sparkles")
         .padding()
 }

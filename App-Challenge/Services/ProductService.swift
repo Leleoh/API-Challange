@@ -35,7 +35,7 @@ class ProductService : ProductServiceProtocol {
     
     
     func fetchProducts() async throws -> [Product] {
-        let urlString: String = "\(baseURL)/products"
+        let urlString: String = "\(baseURL)/products/?limit=200"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
@@ -43,6 +43,7 @@ class ProductService : ProductServiceProtocol {
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let response = try JSONDecoder().decode(ProductResponse.self, from: data)
+        print(response)
         
         return response.products
         

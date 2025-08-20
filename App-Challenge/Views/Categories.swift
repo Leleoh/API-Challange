@@ -1,67 +1,18 @@
-////////
-////////  Categories.swift
-////////  App-Challenge
-////////
-////////  Created by Gustavo Melleu on 13/08/25.
-////////
-//////
 //
-//import SwiftUI
+//  Categories.swift
+//  App-Challenge
 //
-//struct Categories: View {
-//    @State var searchText = ""
-//    
-//    let items = Array(0..<20)
-//    
-//    var body: some View {
-//        NavigationStack {
-//            ScrollView(.vertical, showsIndicators: false) {
-//                VStack(spacing: 16) {
-//                    
-//                    // 1) Carrossel horizontal logo abaixo da search bar
-//                    ScrollView(.horizontal, showsIndicators: false) {
-//                        HStack(spacing: 12) {
-//                            ForEach(0..<10, id: \.self) { _ in
-//                                CategoryButtonView()
-//                            }
-//                        }
-//                        .padding(.horizontal, 16)
-//                        .padding(.vertical, 8)
-//                    }
-//                    
-//                    // 2) Lista/grid de categorias imediatamente abaixo
-//                    
-//                       VStack ( spacing: 12) {
-//                        ForEach(items, id: \.self) { _ in
-//                            NavigationLink {
-//                                  Category()
-//                              } label: {
-//                                  CategoryView()
-//                              }
-//                              
-//                          }
-//                      }
-//                    
-//                              .padding(.horizontal, 16)
-//                              .padding(.bottom, 24)
-//                }
-//            }
-//            .navigationTitle("Categories")
-//                    
-//        }
-//        .searchable(text: $searchText, prompt: "Search")
-//        .background(Color.white)
-//    }
-//}
-//    #Preview {
-//        Categories()
-//    }
-
-
+//  Created by Gustavo Melleu on 13/08/25.
+//
 import SwiftUI
 
 struct Categories: View {
+    
+    @StateObject private var viewModel = CategoriesViewModel()
+    @State private var selectedCategory: String? = nil
     @State var searchText = ""
+    
+    
     let items = Array(0..<20)
     
     var body: some View {
@@ -76,37 +27,70 @@ struct Categories: View {
         }
         .searchable(text: $searchText, prompt: "Search")
         .background(Color.white)
+        .task {
+            await viewModel.loadProducts()
+        }
     }
     
     private var carouselSection: some View {
+        // Adicionamos uma ScrollView para o caso de ter mais botões no futuro
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(0..<4, id: \.self) { _ in
-                    CategoryButtonView()
-                }
+                // ✅ Passamos o nome da categoria e o binding para cada botão
+                CategoryButtonView(
+                    categoryName: "beauty",
+                    systemImageName: "sparkles",
+                    
+                )
+                CategoryButtonView(
+                    categoryName: "fragrances",
+                    systemImageName: "drop.fill",
+                   
+                )
+                CategoryButtonView(
+                    categoryName: "furniture",
+                    systemImageName: "chair.lounge.fill",
+                    
+                )
+                CategoryButtonView(
+                    categoryName: "groceries",
+                    systemImageName: "basket.fill",
+                    
+                )
             }
             .padding(.horizontal, 16)
-            .padding(.vertical, 8)
         }
     }
     
     private var categoriesSection: some View {
-        VStack(spacing: 12) {
-            ForEach(items, id: \.self) { _ in
+        VStack(spacing: 8) {
+            ForEach(viewModel.categories, id: \.self) { categoryName in
                 NavigationLink {
-                    Category(viewModel: ProductViewModel(service: ProductService()))
+                    Category(
+                        title: categoryName,
+                        products: viewModel.allProducts.filter { $0.category.lowercased() == categoryName.lowercased() }
+                    )
                 } label: {
-                    CategoryView()
+                    CategoryView(title: categoryName.formattedForDisplay, imageName: "sparkles") // ou mapa de ícones se quiser
                 }
+                Divider()
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 24)
-        .searchable(text: $searchText, prompt: "Search")
+        .padding(.horizontal, 8)
     }
 
 }
 
 #Preview {
     Categories()
+}
+
+extension String {
+    var formattedForDisplay: String {
+        self
+            .replacingOccurrences(of: "-", with: " ") // substitui hífen por espaço
+            .split(separator: " ")                     // divide em palavras
+            .map { $0.capitalized }                   // primeira letra maiúscula
+            .joined(separator: " ")                    // junta de volta
+    }
 }
