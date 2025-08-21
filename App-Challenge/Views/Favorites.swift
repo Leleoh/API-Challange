@@ -63,9 +63,7 @@ struct Favorites: View {
         }
 
         Group {
-            if vm.isLoading {
-                ProgressView("Carregando favoritos…")
-            } else if filtered.isEmpty {
+           if filtered.isEmpty {
                FavoritesEmptyState()
             } else {
                 ScrollView {

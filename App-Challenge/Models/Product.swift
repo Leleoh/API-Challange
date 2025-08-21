@@ -62,14 +62,33 @@ class CartItem {
 }
 
 @Model
-class OrderItem{
-    @Attribute(.unique) var id: UUID
-    var products: [Int]
+final class Order {
+    // id é gerado automaticamente pelo SwiftData
     var createdAt: Date
-    
-    init(products: [Int]) {
-        self.id = UUID()
-        self.products = products
-        self.createdAt = Date()
+    var total: Double
+    @Relationship(deleteRule: .cascade) var items: [OrderItem]
+
+    init(createdAt: Date = Date(), total: Double = 0, items: [OrderItem] = []) {
+        self.createdAt = createdAt
+        self.total = total
+        self.items = items
+    }
+}
+
+@Model
+final class OrderItem {
+    // Snapshot do produto no momento da compra
+    var productId: Int
+    var title: String
+    var price: Double
+    var thumbnail: String
+    var qty: Int
+
+    init(productId: Int, title: String, price: Double, thumbnail: String, qty: Int) {
+        self.productId = productId
+        self.title = title
+        self.price = price
+        self.thumbnail = thumbnail
+        self.qty = qty
     }
 }

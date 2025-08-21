@@ -20,7 +20,7 @@ struct ProductListOrders: View {
             } placeholder: {
                 Image( "ImageProduct")
                     .resizable()
-                    .frame(width: 78, height: 78)
+                    .frame(maxWidth: 78, maxHeight: 78)
                     .padding(8)
             }
             VStack(){

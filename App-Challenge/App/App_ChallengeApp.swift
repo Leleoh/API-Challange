@@ -11,6 +11,6 @@ import SwiftData
 struct App_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {TabBar()}
-        .modelContainer(for: [SavedProductRef.self, CartItem.self])
+        .modelContainer(for: [SavedProductRef.self, CartItem.self, Order.self, OrderItem.self])
     }
 }
