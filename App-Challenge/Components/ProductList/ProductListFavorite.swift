@@ -38,7 +38,7 @@ struct ProductListFavorite: View {
                 }
                
         
-                    CartIcon()
+                    CartIcon(product: product)
                     
                     .padding(.trailing, 16)
                     
