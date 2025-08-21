@@ -6,18 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct Detail: View {
-    @Environment(\.dismiss) private var dismiss
-    @State private var showSheet = false
+    @Environment(\.modelContext) private var ctx
+    @State private var added = false
     
     var product : Product
+
     
-    //    var text = "Name of a product with two or more lines goes here"
-    //    var text2 = "R$ 00,00"
-    //    var text3 = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis nec mauris ac placerat. Cras pulvinar dolor at orci semper hendrerit. Nam elementum leo vitae quam commodo, blandit ultricies diam malesuada. Suspendisse lacinia euismod quam interdum mollis. Pellentesque a eleifend ante. Aliquam tempus ultricies velit, eget consequat m"
-    
-    let productImage = ProductPhotoLarge()
+//    let productImage = ProductPhotoLarge(product: )
     
     var body: some View {
         
@@ -53,37 +51,59 @@ struct Detail: View {
                                 .foregroundColor(.secondary)
                             
                         }
+                        .padding(.horizontal)
+                        
                         
                         
                         
                         
                         
                     }
+                    .padding(.bottom, 100)
                     .padding()
                     .presentationDragIndicator(.visible)
                     
-                    
                 }
                 
-                ButtonView(text : "Add to cart")
-                    .padding()
+                }
+            .safeAreaInset(edge: .bottom) {
+                            Button(action: {
+                                do {
+                                    try CartService(ctx: ctx).add(productId: product.id, qty: 1)
+                                    added = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { added = false }
+                                    print("✅ Adicionado ao carrinho id=\(product.id)")
+                                } catch {
+                                    print("❌ Erro ao adicionar:", error)
+                                }
+                            }) {
+                                Text( "Add to cart")
+                                    .font(.system(.body, weight: .semibold))
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .foregroundStyle(.labelsPrimary)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .foregroundStyle(.fillsTertiary)
+                                    )
+                            }
+                            .padding(.horizontal)
+                            .padding(.top, 8)
+                            .padding(.bottom, 12)
                 
             }
+            
+            
+            
+            
+            
         }
-        .navigationTitle("Details")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarBackground(Color.white, for: .navigationBar)
-       
+        
+        
+        
         
         
         
         
     }
-    
-    
-    
-    
-    
-    
 }

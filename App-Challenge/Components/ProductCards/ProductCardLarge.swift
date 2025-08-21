@@ -11,7 +11,7 @@ struct ProductCardLarge: View {
     //    let imageName: String
     //    let productName: String
     //    let price: String
-    let heart = FavoriteIcon()
+ 
     
     var product: Product
     
@@ -37,6 +37,7 @@ struct ProductCardLarge: View {
                     image.resizable()
                 } placeholder: {
                     Image( "ImageProduct")
+                    
                         .resizable()
                         .frame(width: 160, height: 160)
                         .cornerRadius(8)
@@ -52,7 +53,8 @@ struct ProductCardLarge: View {
                         
                         Spacer()
                         
-                        heart
+                        FavoriteIcon(productId: product.id)
+                                           .padding(8)
                     }
                     
                     Spacer()

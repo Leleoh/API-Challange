@@ -15,7 +15,6 @@ struct ProductCardMedium: View {
     
     @State private var showDetailsModal: Bool = false
     
-    let heart = FavoriteIcon()
     
     var product: Product
     
@@ -42,8 +41,9 @@ struct ProductCardMedium: View {
                                .padding(.top, 8)
                        }
 //                        coração independente
-                       heart
-                           .padding(.top, 8)
+                       FavoriteIcon(productId: product.id)
+                                          .padding(8)
+//                           .padding(.top, 8)
                            .onTapGesture {
                                print("Favorito clicado")
                            }

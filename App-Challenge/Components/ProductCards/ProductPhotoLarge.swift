@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ProductPhotoLarge: View {
-    
-    let heart = FavoriteIcon()
+    var product : Product
+   
+   
     
     var body: some View {
         ZStack{
@@ -24,13 +25,14 @@ struct ProductPhotoLarge: View {
                         .frame(width: 329, height: 329)
                         .cornerRadius(8)
                         
-                    heart
+                    FavoriteIcon(productId: product.id)
+                                       .padding(8)
                 }
             }
         }
     }
 }
-
-#Preview {
-    ProductPhotoLarge()
-}
+//
+//#Preview {
+//    ProductPhotoLarge()
+//}
