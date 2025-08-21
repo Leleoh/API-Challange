@@ -19,22 +19,11 @@ struct Orders: View {
     var body: some View {
         ScrollView {
             if orders.isEmpty {
-                ContentUnavailableView("Sem pedidos",
-                    systemImage: "shippingbox",
-                    description: Text("Faça checkout do carrinho para ver seus pedidos aqui."))
+              OrdersEmptyState()
             } else {
                 LazyVStack(spacing: 16) {
                     ForEach(orders) { order in
                         // Cabeçalho do pedido
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Order • \(order.createdAt.formatted(date: .abbreviated, time: .shortened))")
-                                .font(.headline)
-                            Text("Total: US$ \(order.total, specifier: "%.2f")")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 16)
 
                         // Itens do pedido
                         ForEach(order.items) { item in
@@ -47,7 +36,7 @@ struct Orders: View {
                                 price: item.price,   // preço no momento da compra
                                 thumbnail: item.thumbnail
                             )
-                            ProductListOrders(product: product)
+                            ProductListOrders(product: product, date: order.createdAt)
                                 .overlay(
                                     // quantidade (se quiser exibir)
                                     Text("x\(item.qty)")
