@@ -31,43 +31,23 @@
 import SwiftUI
 import SwiftData
 
-@MainActor
-final class CartViewModel: ObservableObject {
-    @Published var products: [Product] = []
-    @Published var loading = false
-    private let service: ProductServiceProtocol
-    init(service: ProductServiceProtocol = ProductService()) { self.service = service }
-
-    func reload(byIDs ids: [Int]) async {
-        guard !ids.isEmpty else { products = []; return }
-        loading = true; defer { loading = false }
-        do {
-            var tmp: [Product] = []
-            for id in ids {
-                // se seu service for number:, troque aqui:
-                let p = try await service.fetchProduct(number: id)
-                tmp.append(p)
-            }
-            // mantém ordem de adição
-            let order = ids
-            products = tmp.sorted {
-                (order.firstIndex(of: $0.id) ?? .max) < (order.firstIndex(of: $1.id) ?? .max)
-            }
-            print("🛒 carregados \(products.count) produtos")
-        } catch {
-            print("❌ erro ao carregar cart:", error)
-            products = []
-        }
-    }
-}
-
 struct Cart: View {
     @StateObject private var vm = CartViewModel()
 
     // observa TUDO de CartItem; ordenamos em memória
     @Query private var cartItems: [CartItem]
+    @Environment(\.modelContext) private var ctx
 
     @State private var search = ""
+    
+    var total: Double {
+        cartItems.reduce(0) { partial, item in
+            if let product = vm.products.first(where: { $0.id == item.productId }) {
+                return partial + (product.price * Double(item.qty))
+            }
+            return partial
+        }
+    }
 
     var body: some View {
         let ordered = cartItems.sorted { $0.addedAt > $1.addedAt }
@@ -80,19 +60,50 @@ struct Cart: View {
         }
 
         Group {
-            if vm.loading {
-                ProgressView("Carregando carrinho…")
-            } else if filtered.isEmpty {
+              if filtered.isEmpty {
                 CartEmptyState()
             } else {
                 ScrollView {
                     LazyVStack(spacing: 12) {
                         ForEach(filtered, id: \.id) { p in
-                            ProductListPillStepper(product: p) // seu componente
+                            ProductListPillStepper(product: p)
+                            // seu componente
                         }
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 12)
+                    
+                    HStack {
+                        Text("Total:")
+                            .font(.headline)
+                            Spacer()
+                        Text("US$ \(total, specifier: "%.2f")")
+                            .font(.headline)
+                            .bold()
+                        }
+                    Button {
+                        Task { // async porque o checkout busca produtos na API
+                            do {
+                                let service = OrderService(ctx: ctx, productService: ProductService())
+                                _ = try await service.checkout()
+                                // (opcional) feedback:
+                                print("✅ Pedido criado!")
+                                // (opcional) navegar para Orders
+                                // navigationPath / Tab selection, conforme sua navegação
+                            } catch {
+                                print("❌ Erro no checkout:", error)
+                            }
+                        }
+                    } label: {
+                        Text("Checkout")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(.blue)
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .padding()
+                       
                 }
             }
         }
