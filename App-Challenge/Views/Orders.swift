@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Orders: View {
+//    @StateObject var vm: OrderViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Text("Label")
     }
 }
 
-#Preview {
-    Orders()
-}
+//#Preview {
+//    OrderView()
+//}
