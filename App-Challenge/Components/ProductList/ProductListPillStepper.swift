@@ -93,7 +93,7 @@ struct ProductListPillStepper: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                PillStepper(value: $qty, range: 0...100, step: 1)
+                PillStepper(value: $qty, range: 0...9, step: 1)
                     .padding(.trailing, 16)
             }
         }
