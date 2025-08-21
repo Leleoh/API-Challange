@@ -24,15 +24,19 @@ struct ProductListOrders: View {
 
     var body: some View {
         HStack(spacing: 8) {
+            
+//            Spacer()
             AsyncImage(url: URL(string: product.thumbnail)) { image in
                 image.resizable()
+                    .frame(maxWidth: 78, maxHeight: 78)
+                    .padding(8)
             } placeholder: {
                 Image("ImageProduct")
                     .resizable()
                     .frame(maxWidth: 78, maxHeight: 78)
                     .padding(8)
             }
-            Spacer()
+//            Spacer()
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("DELIVERY BY \(Self.df.string(from: date))")

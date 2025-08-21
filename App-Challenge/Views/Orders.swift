@@ -31,8 +31,8 @@ struct Orders: View {
                             let product = Product(
                                 id: item.productId,
                                 title: item.title,
-                                description: "",     // snapshot não precisa
-                                category: "",        // snapshot não precisa
+                                description: "",
+                                category: "",
                                 price: item.price,   // preço no momento da compra
                                 thumbnail: item.thumbnail
                             )
