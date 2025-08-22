@@ -126,12 +126,12 @@ struct Cart: View {
         .navigationTitle("Cart")
         .searchable(text: $search, prompt: "Search")
         .task(id: ids) { // dispara quando IDs mudarem
-            print("🧩 IDs no carrinho:", ids)
+            print(" IDs no carrinho:", ids)
             await vm.reload(byIDs: ids)
         }
         .onAppear {
             // debug: ver se os itens estão gravando
-            print("📦 CartItems salvos:", cartItems.map { ($0.productId, $0.qty) })
+            print(" CartItems salvos:", cartItems.map { ($0.productId, $0.qty) })
         }
         
     }

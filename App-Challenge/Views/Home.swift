@@ -11,7 +11,34 @@ struct Home: View {
 
     let viewModel : ProductViewModel
     
+    var isPad : Bool { UIDevice.current.userInterfaceIdiom == .pad}
+    
+    var columnsDeals :[GridItem]{
+        isPad ? [GridItem(.flexible()), GridItem(.flexible())] :
+                [GridItem(.flexible())]
+    }
+    var columnsMedium :[GridItem]{
+        isPad ? Array(repeating: GridItem(.flexible(), spacing: 16), count: 4) :
+                Array(repeating: GridItem(.flexible(), spacing: 12), count: 2)
+    }
+    
+    
     var body: some View {
+        
+         
+         // define colunas baseado no device
+        var gridColumns: [GridItem] {
+             if UIDevice.current.userInterfaceIdiom == .pad {
+                 
+                 
+                 
+                 
+                 return Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
+             } else {
+               
+                 return [GridItem(.flexible()), GridItem(.flexible())]
+             }
+         }
         
         
         ScrollView {
@@ -23,24 +50,31 @@ struct Home: View {
                             .padding(.horizontal, 16)
                             .padding(.top, 16)
                         
-                        
-                        if let product = viewModel.product {
+                        if isPad {
+                            LazyVGrid(columns: columnsDeals, spacing: 16) {
+                                ForEach(viewModel.products.prefix(2)) { product in
+                                    ProductCardLarge(product: product, viewModel: viewModel)
+                                }
+                            }
+                        }else if
+                            let product = viewModel.product {
                             ProductCardLarge(product: product, viewModel: viewModel)
-                                .padding(.horizontal, 16)
                         }
-
+                                    
+            
                         Text("Top picks")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal, 16)
                         
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                            ForEach(viewModel.products) { product in
-                                ProductCardMedium(product: product)
-                            }
-                        }
-                        .padding(.horizontal, 16)
                         
+                        LazyVGrid(columns: columnsMedium, spacing: 16) {
+                                ForEach(viewModel.products) { product in
+                                    ProductCardMedium(product: product)
+                                        }
+                                    }
+                
+                        .padding(.horizontal, 16)
                     }
                     .task {
                         await viewModel.loadProducts()
