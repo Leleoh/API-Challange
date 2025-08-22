@@ -29,9 +29,9 @@ class CategoriesViewModel: ObservableObject {
             self.categories = Array(uniqueCategories).sorted()
             
             
-            print("✅ Produtos carregados: \(response.products.count)")
+            print(" Produtos carregados: \(response.products.count)")
         } catch {
-            print("❌ Erro ao carregar produtos: \(error)")
+            print(" Erro ao carregar produtos: \(error)")
         }
     }
 }

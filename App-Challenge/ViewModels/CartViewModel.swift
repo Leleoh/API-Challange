@@ -21,18 +21,18 @@ final class CartViewModel: ObservableObject {
         do {
             var tmp: [Product] = []
             for id in ids {
-                // se seu service for number:, troque aqui:
+              
                 let p = try await service.fetchProduct(number: id)
                 tmp.append(p)
             }
-            // mantém ordem de adição
+        
             let order = ids
             products = tmp.sorted {
                 (order.firstIndex(of: $0.id) ?? .max) < (order.firstIndex(of: $1.id) ?? .max)
             }
-            print("🛒 carregados \(products.count) produtos")
+            print(" carregados \(products.count) produtos")
         } catch {
-            print("❌ erro ao carregar cart:", error)
+            print(" erro ao carregar cart:", error)
             products = []
         }
     }
