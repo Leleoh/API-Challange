@@ -42,57 +42,64 @@ struct Home: View {
         
         
         ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        
-                        Text("Deals of the day")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .padding(.horizontal, 16)
-                            .padding(.top, 16)
-                        
-                        if isPad {
-                            LazyVGrid(columns: columnsDeals, spacing: 16) {
-                                ForEach(viewModel.products.prefix(2)) { product in
-                                    ProductCardLarge(product: product, viewModel: viewModel)
-                                }
-                            }
-                        }else if
-                            let product = viewModel.product {
-                                ProductCardLarge(product: product, viewModel: viewModel)
-                                    .padding(.horizontal, 16)
-                            }
-
-                        
-                        
-                        
-                                    
-            
-                        Text("Top picks")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .padding(.horizontal, 16)
-                        
-                        
-                        LazyVGrid(columns: columnsMedium, spacing: 16) {
-                                ForEach(viewModel.products) { product in
-                                    ProductCardMedium(product: product)
-                                        }
-                                    }
+            VStack(alignment: .leading, spacing: 16) {
                 
-                        .padding(.horizontal, 16)
+                Text("Deals of the day")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 16)
+                    .accessibilityAddTraits(.isHeader)
+                
+                if isPad {
+                    LazyVGrid(columns: columnsDeals, spacing: 16) {
+                        ForEach(viewModel.products.prefix(2)) { product in
+                            ProductCardLarge(product: product, viewModel: viewModel)
+                        }
                     }
-                    .task {
-                        await viewModel.loadProducts()
+                }else if
+                    let product = viewModel.product {
+                    ProductCardLarge(product: product, viewModel: viewModel)
+                        .padding(.horizontal, 16)
+                }
+                
+                
+                
+                
+                
+                
+                
+                Text("Top picks")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 16)
+                
+                
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    ForEach(viewModel.products) { product in
+                        ProductCardMedium(product: product)
+                            .accessibilityElement(children: .combine)
+                            .accessibilityLabel("\(product.title)")
+                            .accessibilityValue("Preço: \(product.price, format: .currency(code: "BRL"))")
+                            .accessibilityHint("Toque para abrir os detalhes")
+                        
+                        
                     }
                 }
-        .navigationTitle("Home")
-        .toolbarBackground(Color(UIColor.tertiarySystemBackground), for: .navigationBar)
-        .toolbarVisibility(.visible, for: .navigationBar)
-        .refreshable {
-            await viewModel.loadProducts()
+                .padding(.horizontal, 16)
+                
+                .task {
+                    await viewModel.loadProducts()
+                }
+            }
+            .navigationTitle("Home")
+            .toolbarBackground(Color(UIColor.tertiarySystemBackground), for: .navigationBar)
+            .toolbarVisibility(.visible, for: .navigationBar)
+            .refreshable {
+                await viewModel.loadProducts()
+            }
+            
         }
-        
-        
         
     }
 }

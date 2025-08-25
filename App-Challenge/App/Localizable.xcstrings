@@ -195,6 +195,9 @@
         }
       }
     },
+    "Preço: %@" : {
+
+    },
     "Search" : {
       "localizations" : {
         "pt-BR" : {
@@ -214,6 +217,9 @@
           }
         }
       }
+    },
+    "Toque para abrir os detalhes" : {
+
     },
     "Total:" : {
       "localizations" : {
