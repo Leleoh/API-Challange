@@ -39,7 +39,15 @@
       }
     },
     "Beauty" : {
-      "comment" : "Category name"
+      "comment" : "Category name",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beleza"
+          }
+        }
+      }
     },
     "Buy an item and it will show up here." : {
       "localizations" : {
@@ -128,13 +136,37 @@
       }
     },
     "Fragances" : {
-      "comment" : "Category name"
+      "comment" : "Category name",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragrâncias"
+          }
+        }
+      }
     },
     "Furniture" : {
-      "comment" : "Category name"
+      "comment" : "Category name",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Móveis"
+          }
+        }
+      }
     },
     "Groceries" : {
-      "comment" : "Category name"
+      "comment" : "Category name",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mercearia"
+          }
+        }
+      }
     },
     "Home" : {
       "extractionState" : "manual",
@@ -174,16 +206,48 @@
       }
     },
     "Opens the beauty category" : {
-      "comment" : "Hint for category button"
+      "comment" : "Hint for category button",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir a categoria de beleza"
+          }
+        }
+      }
     },
     "Opens the fragrance category" : {
-      "comment" : "Hint for category button"
+      "comment" : "Hint for category button",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir a categoria de fragrâncias"
+          }
+        }
+      }
     },
     "Opens the furniture category" : {
-      "comment" : "Hint for category button"
+      "comment" : "Hint for category button",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir a categoria de Móveis"
+          }
+        }
+      }
     },
     "Opens the grocies category" : {
-      "comment" : "Hint for category button"
+      "comment" : "Hint for category button",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir a categoria de mecearia"
+          }
+        }
+      }
     },
     "Orders" : {
       "localizations" : {
@@ -196,7 +260,25 @@
       }
     },
     "Preço: %@" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preço: %@"
+          }
+        }
+      }
+    },
+    "Price: %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preço: %@"
+          }
+        }
+      }
     },
     "Search" : {
       "localizations" : {
@@ -218,15 +300,22 @@
         }
       }
     },
-    "Toque para abrir os detalhes" : {
-
-    },
     "Total:" : {
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total:"
+          }
+        }
+      }
+    },
+    "Touch to open details" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque para abrir os detalhes"
           }
         }
       }

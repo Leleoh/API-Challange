@@ -80,8 +80,8 @@ struct Home: View {
                         ProductCardMedium(product: product)
                             .accessibilityElement(children: .combine)
                             .accessibilityLabel("\(product.title)")
-                            .accessibilityValue("Preço: \(product.price, format: .currency(code: "BRL"))")
-                            .accessibilityHint("Toque para abrir os detalhes")
+                            .accessibilityValue("Price: \(product.price, format: .currency(code: "BRL"))")
+                            .accessibilityHint("Touch to open details")
                         
                         
                     }
