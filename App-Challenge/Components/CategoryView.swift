@@ -1,55 +1,9 @@
-////
-////  CategoryView.swift
-////  App-Challenge
-////
-////  Created by Gustavo Melleu on 13/08/25.
-////
 //
-//import SwiftUI
+//  CategoryView.swift
+//  App-Challenge
 //
-//struct CategoryView: View {
-//    var categories  = "Category"
-//  
-//    
-//    var body: some View {
-//        
-//        NavigationStack{
-//            HStack{
-//                
-//                Button{
-//                    
+//  Created by Gustavo Melleu on 13/08/25.
 //
-//                    
-//                }label: {
-//                    Text(categories)
-//                        .foregroundStyle(.black)
-//                    Spacer()
-//                    Image(systemName: "chevron.right")
-//                    //                    .foregroundStyle(.fill.tertiary)
-//                        .foregroundStyle(.black)
-//                    
-//                    
-//                    
-//                    
-//                }
-//                .padding()
-//                
-//                
-//                
-//            }
-//     
-//            
-//        }
-//       
-//        
-//        
-//        
-//    }
-//}
-//
-//#Preview {
-//    CategoryView()
-//}
 
 
 import SwiftUI
@@ -62,7 +16,7 @@ struct CategoryView: View {
     var body: some View {
         
         HStack {
-            Text(title)
+            Text(title.categoryDisplayName())
                 .foregroundStyle(.labelsPrimary)
             Spacer()
             Image(systemName: "chevron.right")

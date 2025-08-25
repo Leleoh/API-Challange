@@ -72,9 +72,9 @@ struct Detail: View {
                                     try CartService(ctx: ctx).add(productId: product.id, qty: 1)
                                     added = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { added = false }
-                                    print("✅ Adicionado ao carrinho id=\(product.id)")
+                                    print(" Adicionado ao carrinho id=\(product.id)")
                                 } catch {
-                                    print("❌ Erro ao adicionar:", error)
+                                    print(" Erro ao adicionar:", error)
                                 }
                             }) {
                                 Text( "Add to cart")

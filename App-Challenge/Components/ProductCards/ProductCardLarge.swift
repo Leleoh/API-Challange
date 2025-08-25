@@ -46,7 +46,8 @@ struct ProductCardLarge: View {
                 
                 VStack{
                     HStack(alignment: .center){
-                        Text(product.category)
+                        Text(product.category.categoryDisplayName())
+                        
                             .font(.footnote)
                             .textCase(.uppercase)
                             .foregroundStyle(.labelsSecondary)

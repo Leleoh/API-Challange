@@ -36,7 +36,7 @@ struct Categories: View {
         // Adicionamos uma ScrollView para o caso de ter mais botões no futuro
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                // ✅ Passamos o nome da categoria e o binding para cada botão
+                //  Passamos o nome da categoria e o binding para cada botão
                 CategoryButtonView(
                     categoryName: "beauty",
                     systemImageName: "sparkles",
