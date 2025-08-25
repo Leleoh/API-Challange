@@ -59,6 +59,7 @@ struct Home: View {
                         }else if
                             let product = viewModel.product {
                             ProductCardLarge(product: product, viewModel: viewModel)
+                                .padding(.horizontal, 16)
                         }
                                     
             

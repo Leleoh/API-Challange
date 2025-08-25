@@ -16,7 +16,7 @@ struct CategoryView: View {
     var body: some View {
         
         HStack {
-            Text(title)
+            Text(title.categoryDisplayName())
                 .foregroundStyle(.labelsPrimary)
             Spacer()
             Image(systemName: "chevron.right")

@@ -1,7 +1,11 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+
+    },
     "%@ Category" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -35,7 +39,14 @@
       }
     },
     "Buy an item and it will show up here." : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compre algum item e ele aparecerá aqui"
+          }
+        }
+      }
     },
     "Cart" : {
       "localizations" : {
@@ -78,7 +89,14 @@
       }
     },
     "DELIVERY BY %@" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrega por %@"
+          }
+        }
+      }
     },
     "Favorite an item and it will show up here." : {
       "localizations" : {
@@ -118,7 +136,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "início"
+            "value" : "Início"
           }
         }
       }
@@ -134,10 +152,24 @@
       }
     },
     "No orders yet!" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum pedido ainda!"
+          }
+        }
+      }
     },
     "Orders" : {
-
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pedidos"
+          }
+        }
+      }
     },
     "Search" : {
       "localizations" : {
