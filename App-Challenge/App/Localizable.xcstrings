@@ -38,6 +38,9 @@
         }
       }
     },
+    "Beauty" : {
+      "comment" : "Category name"
+    },
     "Buy an item and it will show up here." : {
       "localizations" : {
         "pt-BR" : {
@@ -124,6 +127,15 @@
         }
       }
     },
+    "Fragances" : {
+      "comment" : "Category name"
+    },
+    "Furniture" : {
+      "comment" : "Category name"
+    },
+    "Groceries" : {
+      "comment" : "Category name"
+    },
     "Home" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -160,6 +172,18 @@
           }
         }
       }
+    },
+    "Opens the beauty category" : {
+      "comment" : "Hint for category button"
+    },
+    "Opens the fragrance category" : {
+      "comment" : "Hint for category button"
+    },
+    "Opens the furniture category" : {
+      "comment" : "Hint for category button"
+    },
+    "Opens the grocies category" : {
+      "comment" : "Hint for category button"
     },
     "Orders" : {
       "localizations" : {

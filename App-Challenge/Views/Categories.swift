@@ -42,21 +42,30 @@ struct Categories: View {
                     systemImageName: "sparkles",
                     
                 )
+                .accessibilityLabel(NSLocalizedString("Beauty", comment: "Category name"))
+                .accessibilityHint(NSLocalizedString("Opens the beauty category", comment: "Hint for category button"))
+                
                 CategoryButtonView(
                     categoryName: "fragrances",
                     systemImageName: "drop.fill",
-                   
                 )
+                .accessibilityLabel(NSLocalizedString("Fragances", comment: "Category name"))
+                .accessibilityHint(NSLocalizedString("Opens the fragrance category", comment: "Hint for category button"))
+                
                 CategoryButtonView(
                     categoryName: "furniture",
                     systemImageName: "chair.lounge.fill",
-                    
                 )
+                .accessibilityLabel(NSLocalizedString("Furniture", comment: "Category name"))
+                .accessibilityHint(NSLocalizedString("Opens the furniture category", comment: "Hint for category button"))
+                
+                
                 CategoryButtonView(
                     categoryName: "groceries",
                     systemImageName: "basket.fill",
-                    
                 )
+                .accessibilityLabel(NSLocalizedString("Groceries", comment: "Category name"))
+                .accessibilityHint(NSLocalizedString("Opens the grocies category", comment: "Hint for category button"))
             }
             .padding(.horizontal, 16)
         }

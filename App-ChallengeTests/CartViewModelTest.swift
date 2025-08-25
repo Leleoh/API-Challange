@@ -8,9 +8,10 @@
 import Testing
 @testable import App_Challenge
 
+@MainActor
 struct CartViewModelTest {
 
-   @Test func example() {
+   @Test func add() {
         #expect(CartViewModel().products.count > 0)
     }
 
