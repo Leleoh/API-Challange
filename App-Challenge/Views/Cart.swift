@@ -87,7 +87,7 @@ struct Cart: View {
                             }
                         } label: {
                             Text("Checkout")
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color(.label))
                                 .fontWeight(.semibold)
                                 .frame(maxWidth: .infinity)
                                 .padding()
