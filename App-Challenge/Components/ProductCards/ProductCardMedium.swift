@@ -9,10 +9,7 @@ import SwiftUI
 
 struct ProductCardMedium: View {
     
-//    let imageName: String
-//    let productName: String
-//    let price: String
-    
+
     @State private var showDetailsModal: Bool = false
     
     
@@ -75,7 +72,7 @@ struct ProductCardMedium: View {
                    Detail(product: product)
                }
                 
-           }//Fim ZStack
+           }
     }
 }
 

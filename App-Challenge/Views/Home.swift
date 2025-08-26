@@ -52,14 +52,19 @@ struct Home: View {
                     .accessibilityAddTraits(.isHeader)
                 
                 if isPad {
-                    LazyVGrid(columns: columnsDeals, spacing: 16) {
+                    LazyVGrid(columns: columnsDeals, spacing: 8) {
                         ForEach(viewModel.products.prefix(2)) { product in
                             ProductCardLarge(product: product, viewModel: viewModel)
+                            
                         }
                     }
                 }else if
                     let product = viewModel.product {
                     ProductCardLarge(product: product, viewModel: viewModel)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("\(product.title)")
+                        .accessibilityValue("Price: \(product.price, format: .currency(code: "BRL"))")
+                        .accessibilityHint("Touch to open details")
                         .padding(.horizontal, 16)
                 }
                 
@@ -75,18 +80,33 @@ struct Home: View {
                     .padding(.horizontal, 16)
                 
                 
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                    ForEach(viewModel.products) { product in
-                        ProductCardMedium(product: product)
-                            .accessibilityElement(children: .combine)
-                            .accessibilityLabel("\(product.title)")
-                            .accessibilityValue("Price: \(product.price, format: .currency(code: "BRL"))")
-                            .accessibilityHint("Touch to open details")
-                        
-                        
-                    }
-                }
-                .padding(.horizontal, 16)
+                
+              if isPad {
+                  LazyVGrid(columns: columnsMedium, spacing: 16) {
+                      ForEach(viewModel.products) { product in
+                          ProductCardMedium(product: product)
+                      }
+                  }
+                  .padding(.horizontal, 16)
+                  
+                  
+                  } else
+                {
+                      
+                      LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                          ForEach(viewModel.products) { product in
+                              ProductCardMedium(product: product)
+                                  .accessibilityElement(children: .combine)
+                                  .accessibilityLabel("\(product.title)")
+                                  .accessibilityValue("Price: \(product.price, format: .currency(code: "BRL"))")
+                                  .accessibilityHint("Touch to open details")
+                              
+                              
+                          }
+                      }
+                      .padding(.horizontal, 16)
+                  }
+                  }
                 
                 .task {
                     await viewModel.loadProducts()
@@ -102,7 +122,7 @@ struct Home: View {
         }
         
     }
-}
+
 
 //#Preview {
 ////    Home(viewModel: ProductViewModel(service: ProductService()))

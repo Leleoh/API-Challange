@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// OrdersView.swift
+
 import SwiftUI
 import SwiftData
 
@@ -19,30 +19,30 @@ struct Orders: View {
     var body: some View {
         
         
-      Group{
+        Group {
             if orders.isEmpty {
               OrdersEmptyState()
+                   
             } else {
-                ScrollView {
+                ScrollView{
                     
                     LazyVStack(spacing: 16) {
                         ForEach(orders) { order in
-                            // Cabeçalho do pedido
                             
-                            // Itens do pedido
+                            
                             ForEach(order.items) { item in
-                                // Monta um Product baseado no snapshot salvo
+                                
                                 let product = Product(
                                     id: item.productId,
                                     title: item.title,
                                     description: "",
                                     category: "",
-                                    price: item.price,   // preço no momento da compra
+                                    price: item.price,
                                     thumbnail: item.thumbnail
                                 )
                                 ProductListOrders(product: product, date: order.createdAt)
                                     .overlay(
-                                        // quantidade (se quiser exibir)
+                                        
                                         Text("x\(item.qty)")
                                             .font(.caption)
                                             .padding(6)
