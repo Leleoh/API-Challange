@@ -17,7 +17,7 @@ struct ProductListPillStepper: View {
     var body: some View {
         ZStack {
             HStack(spacing: 8) {
-                AsyncImage(url: URL(string: product.thumbnail)) { $0.resizable() }
+                AsyncImage(url: URL(string: product.thumbnail)) { $0.resizable().frame(maxWidth: 78, maxHeight: 78).padding(8) }
                     placeholder: { Image("ImageProduct").resizable().frame(width: 78, height: 78).padding(8) }
 
                 VStack {
@@ -41,8 +41,8 @@ struct ProductListPillStepper: View {
         .onChange(of: qty) { newValue in
             do {
                 try CartService(ctx: ctx).setQty(productId: product.id, qty: newValue)
-                print("✏️ qty \(product.id) -> \(newValue)")
-            } catch { print("❌ erro qty:", error) }
+                print(" qty \(product.id) -> \(newValue)")
+            } catch { print(" erro qty:", error) }
         }
     }
 }
