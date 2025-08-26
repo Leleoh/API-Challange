@@ -9,18 +9,12 @@ import SwiftUI
 
 struct Category: View {
     
-//    let category: ProductCategory //Categoria selecionada
     @State private var searchText = ""
    
     let title: String
     let products: [Product]
     
-//    let viewModel : ProductViewModel
-    
-    
-    
-    
-//    let items = Array(0..<200)
+
 
     var filteredProducts: [Product] {
         if searchText.isEmpty {
@@ -40,11 +34,11 @@ struct Category: View {
                     }
                 }
                 .padding(16)
-            }//Fim ScrollView
+            }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search")
 
             
-        }//Fim navigation Stack
+        }
         .navigationTitle(title.formattedForDisplay.categoryDisplayName())
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -52,11 +46,3 @@ struct Category: View {
 
 
 
-
-
-//#Preview {
-//    
-//    let listaprodutos: [Product] = []
-//    
-//    let mock = Category(title: "Apple", products: listaprodutos, viewModel: viewModel)
-//}

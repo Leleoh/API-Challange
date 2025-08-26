@@ -81,14 +81,12 @@ struct ProductCardLarge: View {
             
             .sheet(isPresented: $showDetailsModal) {
             NavigationStack{
-                    Detail(product: product) // <- passa o product aqui
+                    Detail(product: product)
                     
                 }
                 
             }
-//            .navigationTitle("Details")// título centralizado
-//            .navigationBarTitleDisplayMode(.inline)
-//                Detail(product : product)
+
                 
             
             

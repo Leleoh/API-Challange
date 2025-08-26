@@ -17,7 +17,7 @@ struct PillStepper: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            // Botão -
+          
             Button {
                 value = max(range.lowerBound, value - step)
             } label: {
@@ -30,12 +30,12 @@ struct PillStepper: View {
             .buttonStyle(.plain)
             .opacity(value <= range.lowerBound ? 0.4 : 1)
 
-            // Valor
+          
             Text("\(value)")
                 .font(.system(size: 17, weight: .regular))
                 .frame(width: 20)
 
-            // Botão +
+           
             Button {
                 value = min(range.upperBound, value + step)
             } label: {

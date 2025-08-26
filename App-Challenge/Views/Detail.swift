@@ -15,7 +15,7 @@ struct Detail: View {
     var product : Product
 
     
-//    let productImage = ProductPhotoLarge(product: )
+
     
     var body: some View {
         
@@ -25,7 +25,7 @@ struct Detail: View {
                 
                 VStack(spacing : 16){
                     
-                    //Chama o componente
+                    
                     AsyncImage(url: URL(string: product.thumbnail)) { image in
                         image.resizable()
                     } placeholder: {
@@ -93,17 +93,11 @@ struct Detail: View {
                 
             }
             
-            
-            
-            
+        
             
         }
         
-        
-        
-        
-        
-        
+ 
         
     }
 }

@@ -38,10 +38,10 @@ struct OrderViewModelTests {
             .store(in: &cancellables)
 
         vm.products = [Product(id: 99, title: "X", description: "", category: "", price: 1, thumbnail: "")]
-        // dá uma rodada no runloop para o publisher emitir
+       
         await Task.yield()
 
         #expect(published)
-        _ = cancellables // mantêm vivos
+        _ = cancellables 
     }
 }

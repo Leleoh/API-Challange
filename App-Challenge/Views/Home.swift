@@ -26,7 +26,7 @@ struct Home: View {
     var body: some View {
         
          
-         // define colunas baseado no device
+     
         var gridColumns: [GridItem] {
              if UIDevice.current.userInterfaceIdiom == .pad {
                  
@@ -123,8 +123,3 @@ struct Home: View {
         
     }
 
-
-//#Preview {
-////    Home(viewModel: ProductViewModel(service: ProductService()))
-//    Home()
-//}

@@ -5,27 +5,7 @@
 ////  Created by Gustavo Melleu on 14/08/25.
 ////
 //
-//import SwiftUI
-//
-//struct Cart: View {
-//    @State private var searchText = ""
-//    var body: some View {
-//       
-//       
-//        VStack{
-//            
-//            CartEmptyState()
-//            
-//        }
-//        .searchable(text: $searchText, prompt: "Search")
-//        
-//        
-//    }
-//}
-//
-//#Preview {
-//    Cart()
-//}
+
 
 import Foundation
 import SwiftUI
@@ -34,7 +14,7 @@ import SwiftData
 struct Cart: View {
     @StateObject private var vm = CartViewModel()
 
-    // observa TUDO de CartItem; ordenamos em memória
+   
     @Query private var cartItems: [CartItem]
     @Environment(\.modelContext) private var ctx
 
@@ -94,14 +74,13 @@ struct Cart: View {
                         .padding(.top, 12)
                     
                         Button {
-                            Task { // async porque o checkout busca produtos na API
+                            Task {
                                 do {
                                     let service = OrderService(ctx: ctx, productService: ProductService())
                                     _ = try await service.checkout()
-                                    // (opcional) feedback:
+                                  
                                     print("Pedido criado!")
-                                    // (opcional) navegar para Orders
-                                    // navigationPath / Tab selection, conforme sua navegação
+                                 
                                 } catch {
                                     print("Erro no checkout:", error)
                                 }
@@ -125,12 +104,12 @@ struct Cart: View {
         }
         .navigationTitle("Cart")
         .searchable(text: $search, prompt: "Search")
-        .task(id: ids) { // dispara quando IDs mudarem
+        .task(id: ids) {
             print(" IDs no carrinho:", ids)
             await vm.reload(byIDs: ids)
         }
         .onAppear {
-            // debug: ver se os itens estão gravando
+           
             print(" CartItems salvos:", cartItems.map { ($0.productId, $0.qty) })
         }
         

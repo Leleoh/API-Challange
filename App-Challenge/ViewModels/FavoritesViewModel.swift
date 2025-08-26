@@ -25,7 +25,7 @@ final class FavoritesViewModel: ObservableObject {
                 let p = try await service.fetchProduct(number: id)
                 result.append(p)
             }
-            // preserva ordem dos favoritos (mais recentes primeiro)
+            
             let order = ids
             items = result.sorted { a, b in
                 (order.firstIndex(of: a.id) ?? .max) < (order.firstIndex(of: b.id) ?? .max)

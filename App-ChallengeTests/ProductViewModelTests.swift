@@ -13,7 +13,7 @@ struct App_ChallengeTests {
     @Test
     func fetchProducts_shouldFail() async {
         let service = MockProductService()
-        service.shouldFail = true   // <- aqui é true
+        service.shouldFail = true  
 
         let viewModel = ProductViewModel(service: service)
         await viewModel.loadProducts()

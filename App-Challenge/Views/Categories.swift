@@ -36,7 +36,7 @@ struct Categories: View {
         // Adicionamos uma ScrollView para o caso de ter mais botões no futuro
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                //  Passamos o nome da categoria e o binding para cada botão
+                
                 CategoryButtonView(
                     categoryName: "beauty",
                     systemImageName: "sparkles",
@@ -97,9 +97,9 @@ struct Categories: View {
 extension String {
     var formattedForDisplay: String {
         self
-            .replacingOccurrences(of: "-", with: " ") // substitui hífen por espaço
-            .split(separator: " ")                     // divide em palavras
-            .map { $0.capitalized }                   // primeira letra maiúscula
-            .joined(separator: " ")                    // junta de volta
+            .replacingOccurrences(of: "-", with: " ") 
+            .split(separator: " ")
+            .map { $0.capitalized }
+            .joined(separator: " ")
     }
 }

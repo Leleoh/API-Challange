@@ -52,7 +52,7 @@ final class CategoriesViewModel: ObservableObject {
         } catch {
             allProducts = []
             categories = []
-            // opcional: guardar uma errorMessage publicada
+       
         }
     }
 }

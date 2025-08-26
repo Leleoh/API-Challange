@@ -36,7 +36,7 @@ struct CartIcon: View {
         }
         .sheet(isPresented: $showDetailsModal) {
             NavigationStack{
-                Detail(product: product) // <- passa o product aqui
+                Detail(product: product)
                 
             }
             
