@@ -7,50 +7,45 @@
 import SwiftUI
 import SwiftData
 
+import SwiftUI
+import SwiftData
+
 struct FavoriteIcon: View {
     @Environment(\.modelContext) private var ctx
     let productId: Int
     @State private var isFav = false
-
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 38, height: 38)
                 .foregroundStyle(.fill.tertiary)
 
-            Button { toggle() } label: {
+            Button {
+                toggle()
+            } label: {
                 Image(systemName: isFav ? "heart.fill" : "heart")
                     .foregroundStyle(.labelsPrimary)
             }
         }
-        .task { isFav = (try? isFavorite(productId)) ?? false } //Busca no banco para ver se já está marcado, caso não esteja, é false
+        .task {
+            let service = FavoriteIconService(ctx: ctx)
+            isFav = (try? service.isFavorite(productId)) ?? false
+        }
     }
-
+    
     private func toggle() {
+        let service = FavoriteIconService(ctx: ctx)
         do {
-            if try isFavorite(productId) {
-                try remove(productId)
+            if try service.isFavorite(productId) {
+                try service.removeFavorite(productId)
                 isFav = false
             } else {
-                ctx.insert(SavedProductRef(productId: productId, isFavorite: true))
-                try ctx.save()
+                try service.addFavorite(productId)
                 isFav = true
             }
-        } catch { print("Fav toggle erro:", error) }
-    }
-
-    private func isFavorite(_ id: Int) throws -> Bool {
-        let d = FetchDescriptor<SavedProductRef>(
-            predicate: #Predicate { $0.productId == id && $0.isFavorite == true }
-        )
-        return try ctx.fetchCount(d) > 0
-    }
-
-    private func remove(_ id: Int) throws {
-        let d = FetchDescriptor<SavedProductRef>(
-            predicate: #Predicate { $0.productId == id && $0.isFavorite == true }
-        )
-        try ctx.fetch(d).forEach { ctx.delete($0) }
-        try ctx.save()
+        } catch {
+            print("Fav toggle erro:", error)
+        }
     }
 }
