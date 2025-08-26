@@ -45,7 +45,7 @@ struct Category: View {
 
             
         }//Fim navigation Stack
-        .navigationTitle(title.categoryDisplayName().formattedForDisplay)
+        .navigationTitle(title.formattedForDisplay.categoryDisplayName())
         .navigationBarTitleDisplayMode(.inline)
     }
 }
