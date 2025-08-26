@@ -26,7 +26,7 @@ struct Categories: View {
             .navigationTitle("Categories")
         }
         .searchable(text: $searchText, prompt: "Search")
-        .background(Color.white)
+        .background(Color.backgroundsPrimary)
         .task {
             await viewModel.loadProducts()
         }
