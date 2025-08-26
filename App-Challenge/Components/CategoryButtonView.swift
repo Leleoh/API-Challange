@@ -15,7 +15,7 @@ struct CategoryButtonView: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: Text("\(categoryName.categoryDisplayName())")) {
+            NavigationLink(destination: Text("\(categoryName.categoryDisplayName()) Category")) {
                 Image(systemName: systemImageName)
                     .foregroundStyle(.fillsQuaternary)
                     .font(.system(size: 40))

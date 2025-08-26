@@ -41,8 +41,8 @@ struct ProductListPillStepper: View {
         .onChange(of: qty) { newValue in
             do {
                 try CartService(ctx: ctx).setQty(productId: product.id, qty: newValue)
-                print("✏️ qty \(product.id) -> \(newValue)")
-            } catch { print("❌ erro qty:", error) }
+                print("qty \(product.id) -> \(newValue)")
+            } catch { print(" erro qty:", error) }
         }
     }
 }

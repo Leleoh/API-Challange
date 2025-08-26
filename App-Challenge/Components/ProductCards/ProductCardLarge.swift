@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct ProductCardLarge: View {
-    //    let imageName: String
-    //    let productName: String
-    //    let price: String
- 
     
     var product: Product
     
@@ -46,8 +42,7 @@ struct ProductCardLarge: View {
                 
                 VStack{
                     HStack(alignment: .center){
-                        Text(product.category.categoryDisplayName())
-                        
+                        Text(product.category)
                             .font(.footnote)
                             .textCase(.uppercase)
                             .foregroundStyle(.labelsSecondary)
