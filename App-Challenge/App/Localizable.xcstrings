@@ -334,6 +334,7 @@
       }
     },
     "US$ %.2f" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {
@@ -342,6 +343,9 @@
           }
         }
       }
+    },
+    "US$ %@" : {
+
     },
     "x%lld" : {
       "localizations" : {

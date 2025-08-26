@@ -86,7 +86,7 @@ struct Cart: View {
                         Text("Total:")
                             .font(.headline)
                             Spacer()
-                        Text("US$ \(total, specifier: "%.2f")")
+                            Text("US$ \(total.formatted(.number.precision(.fractionLength(2))))")
                             .font(.headline)
                             .bold()
                         }
@@ -99,11 +99,11 @@ struct Cart: View {
                                     let service = OrderService(ctx: ctx, productService: ProductService())
                                     _ = try await service.checkout()
                                     // (opcional) feedback:
-                                    print("✅ Pedido criado!")
+                                    print("Pedido criado!")
                                     // (opcional) navegar para Orders
                                     // navigationPath / Tab selection, conforme sua navegação
                                 } catch {
-                                    print("❌ Erro no checkout:", error)
+                                    print("Erro no checkout:", error)
                                 }
                             }
                         } label: {
