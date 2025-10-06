@@ -9,13 +9,14 @@
 
 import SwiftUI
 
-struct CategoryButtonView: View {
+struct CategoryButtonView<Destination: View>: View {
     let categoryName: String
     let systemImageName: String
+    let destination: Destination
     
     var body: some View {
         VStack {
-            NavigationLink(destination: Text("\(categoryName.categoryDisplayName()) Category")) {
+            NavigationLink(destination: destination) {
                 Image(systemName: systemImageName)
                     .foregroundStyle(.fillsQuaternary)
                     .font(.system(size: 40))
@@ -33,5 +34,12 @@ struct CategoryButtonView: View {
 }
 
 #Preview {
-    CategoryButtonView(categoryName: "Beauty", systemImageName: "sparkles")
+    NavigationStack {
+        CategoryButtonView(
+            categoryName: "Beauty",
+            systemImageName: "sparkles",
+            destination: Text("Beauty")
+        )
+    }
 }
+
