@@ -12,6 +12,7 @@
       }
     },
     "%@ Category" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pt-BR" : {
           "stringUnit" : {

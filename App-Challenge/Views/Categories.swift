@@ -40,7 +40,10 @@ struct Categories: View {
                 CategoryButtonView(
                     categoryName: "beauty",
                     systemImageName: "sparkles",
-                    
+                    destination: Category(
+                        title: "beauty",
+                        products: viewModel.allProducts.filter { $0.category.lowercased() == "beauty" }
+                    )
                 )
                 .accessibilityLabel(NSLocalizedString("Beauty", comment: "Category name"))
                 .accessibilityHint(NSLocalizedString("Opens the beauty category", comment: "Hint for category button"))
@@ -48,6 +51,10 @@ struct Categories: View {
                 CategoryButtonView(
                     categoryName: "fragrances",
                     systemImageName: "drop.fill",
+                    destination: Category(
+                        title: "fragrances",
+                        products: viewModel.allProducts.filter { $0.category.lowercased() == "fragrances" }
+                    )
                 )
                 .accessibilityLabel(NSLocalizedString("Fragances", comment: "Category name"))
                 .accessibilityHint(NSLocalizedString("Opens the fragrance category", comment: "Hint for category button"))
@@ -55,6 +62,10 @@ struct Categories: View {
                 CategoryButtonView(
                     categoryName: "furniture",
                     systemImageName: "chair.lounge.fill",
+                    destination: Category(
+                        title: "furniture",
+                        products: viewModel.allProducts.filter { $0.category.lowercased() == "furniture" }
+                    )
                 )
                 .accessibilityLabel(NSLocalizedString("Furniture", comment: "Category name"))
                 .accessibilityHint(NSLocalizedString("Opens the furniture category", comment: "Hint for category button"))
@@ -63,6 +74,10 @@ struct Categories: View {
                 CategoryButtonView(
                     categoryName: "groceries",
                     systemImageName: "basket.fill",
+                    destination: Category(
+                        title: "groceries",
+                        products: viewModel.allProducts.filter { $0.category.lowercased() == "groceries" }
+                    )
                 )
                 .accessibilityLabel(NSLocalizedString("Groceries", comment: "Category name"))
                 .accessibilityHint(NSLocalizedString("Opens the grocies category", comment: "Hint for category button"))
@@ -103,3 +118,4 @@ extension String {
             .joined(separator: " ")
     }
 }
+
